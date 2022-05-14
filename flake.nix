@@ -7,9 +7,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        rules = pkgs.callPackage ./udev-rules.nix { inherit pkgs; };
       in {
         packages.default = import ./default.nix { inherit pkgs; };
-        services.udev.packages = [ rules ];
       });
 }
