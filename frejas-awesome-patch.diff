@@ -1,0 +1,29 @@
+diff --git a/Makefile b/Makefile
+index 55c385f..e715716 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,12 +1,12 @@
+-#OS ?= LINUX
++OS ?= LINUX
+ #OS ?= WINDOWS
+-OS ?= MACOSX
++#OS ?= MACOSX
+ #OS ?= BSD
+ 
+ # uncomment this to use libusb on Macintosh, instead of Apple's HID manager via IOKit
+ # this is technically not the "correct" way to support Macs, but it's been reported to
+ # work.
+-USE_LIBUSB ?= YES
++#USE_LIBUSB ?= YES
+ 
+ ifeq ($(OS), LINUX)  # also works on FreeBSD
+ CC ?= gcc
+@@ -43,7 +43,7 @@ endif
+ 	$(CC) $(CFLAGS) -DUSE_APPLE_IOKIT -isysroot $(SDK) -o hid_bootloader_cli teensy_loader_cli.c -Wl,-syslibroot,$(SDK) -framework IOKit -framework CoreFoundation
+ 
+ endif
+-	mv hid_bootloader_cli ~/bin/
++#	mv hid_bootloader_cli ~/bin/
+ else ifeq ($(OS), BSD)  # works on NetBSD and OpenBSD
+ CC ?= gcc
+ CFLAGS ?= -O2 -Wall
